@@ -9,7 +9,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
+  "devDependencies": {
     "gulp": "^4.0.2",
     "gulp-typescript": "*",
     "typescript": "^4.6.3"
