@@ -191,3 +191,9 @@ class Horse extends Animal {
   }
 }
 ```
+
+### 公共，私有与受保护的修饰符
+
+- public
+
+  > 在 TypeScript 里，成员都默认为 public
