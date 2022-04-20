@@ -20,6 +20,7 @@
 1. [简介](#简介)
 2. [基础类型](#基础类型)
 3. [接口](#接口)
+4. [类](#类)
 
 ## 简介
 
@@ -137,3 +138,56 @@
   }
 
   ```
+
+## [类](../ts-learn/class.ts)
+
+> ECMAScript 6 开始，JavaScript 程序员将能够使用基于类的面向对象的方式。
+
+```js
+class Greeter {
+  greeting: string;
+  constructor(message: string) {
+    this.greeting = message;
+  }
+  greet() {
+    return "hello, " + this.greeting;
+  }
+}
+let greeter = new Greeter("world");
+```
+
+### 继承
+
+> 基于类的程序设计中一种最基本的模式是允许使用继承来扩展现有的类
+
+```js
+class Animal {
+  move(distanceInMeters: number = 0) {
+    console.log(`Animal moved ${distanceInMeters}m.`);
+  }
+}
+
+class Dog extends Animal {
+  bark() {
+    console.log("Woof! Woof!");
+  }
+}
+
+const dog = new Dog();
+```
+
+> 我们使用 extends 关键字创建了 Animal 的两个子类
+
+下面是 Horse 类继承 Animal 进行 move 方法的重写的操作
+
+```js
+class Horse extends Animal {
+  constructor(name: string) {
+    super(name);
+  }
+  move(distanceInMeters = 45) {
+    console.log("Galloping...");
+    super.move(distanceInMeters);
+  }
+}
+```
