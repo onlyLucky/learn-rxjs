@@ -197,3 +197,60 @@ class Horse extends Animal {
 - public
 
   > 在 TypeScript 里，成员都默认为 public
+
+  ```js
+  class Animal {
+    public name: string;
+    public constructor(theName: string) { this.name = theName; }
+    public move(distanceInMeters: number) {
+        console.log(`${this.name} moved ${distanceInMeters}m.`);
+    }
+  }
+  ```
+
+- private
+
+  > 成员被标记成 private 时，它就不能在声明它的类的外部访问,在外部衍生子类不可使用
+
+  ```js
+  class Animal {
+    private name: string;
+    constructor(theName: string) { this.name = theName; }
+  }
+  ```
+
+- protected
+
+  > protected 成员在派生类中仍然可以访问
+
+  ```js
+  class Person {
+    protected name: string;
+    constructor(name: string) { this.name = name; }
+  }
+  ```
+
+- readonly 修饰符
+
+  > 使用 readonly 关键字将属性设置为只读的。 只读属性必须在声明时或构造函数里被初始化。
+
+  ```js
+  class Octopus {
+    readonly name: string;
+    readonly numberOfLegs: number = 8;
+    constructor (theName: string) {
+        this.name = theName;
+    }
+  }
+  ```
+
+  > 参数属性可以方便地让我们在一个地方定义并初始化一个成员
+
+  ```js
+  class Animal {
+    constructor(private name: string) { }
+    move(distanceInMeters: number) {
+        console.log(`${this.name} moved ${distanceInMeters}m.`);
+    }
+  }
+  ```
