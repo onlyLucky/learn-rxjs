@@ -254,3 +254,88 @@ class Horse extends Animal {
     }
   }
   ```
+
+### 存取器
+
+> TypeScript 支持通过 getters/setters 来截取对对象成员的访问
+
+```js
+let passcode = "secret passcode";
+
+class Employee {
+  private _fullName: string;
+
+  get fullName(): string {
+    return this._fullName;
+  }
+
+  set fullName(newName: string) {
+    if (passcode && passcode == "secret passcode") {
+      this._fullName = newName;
+    }
+    else {
+      console.log("Error: Unauthorized update of employee!");
+    }
+  }
+}
+
+let employee = new Employee();
+employee.fullName = "Bob Smith";
+if (employee.fullName) {
+  alert(employee.fullName);
+}
+
+```
+
+> 只带有 get 不带有 set 的存取器自动被推断为 readonly
+>
+> 利用这个属性的用户会看到不允许够改变它的值
+
+### 静态属性
+
+> 创建类的静态成员，这些属性存在于类本身上面而不是类的实例上
+
+```js
+class Grid {
+  static origin = {x: 0, y: 0}
+  calculateDistanceFromOrigin(point: {x: number; y: number;}){
+    let xDist = (point.x - Grid.origin.x)
+    let yDist = (point.y - Grid.origin.y)
+    return Math.sqrt(xDist*xDist + yDist*yDist)/this.scale
+  }
+  constructor(public scale: number){}
+}
+let grid1 = new Grid(1.0)
+let grid2 = new Grid(5.0)
+
+console.log(grid1.calculateDistanceFromOrigin({x: 10, y: 10}))
+console.log(grid2.calculateDistanceFromOrigin({x: 10, y: 10}))
+
+```
+
+### 抽象类
+
+> 不同于接口，抽象类可以包含成员的实现细节。 abstract 关键字是用于定义抽象类和在抽象类内部定义抽象方法
+
+```js
+abstract class Department{
+  constructor(public name: string){}
+  printName():void{
+    console.log('Department name: '+this.name)
+  }
+  abstract printMeeting(): void// 必须在派生类中实现
+}
+
+class AccountingDepartment extends Department{
+  constructor(){
+    super('Accounting and Auditing'); // 在派生类的构造函数中必须调用 super()
+  }
+  printMeeting(): void {
+    console.log('The Accounting Department meets each Monday at 10am.');
+  }
+
+  generateReports(): void {
+    console.log('Generating accounting reports...');
+  }
+}
+```
