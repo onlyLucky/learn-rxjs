@@ -2,7 +2,7 @@
  * @Author: fg
  * @Date: 2022-04-20 19:40:40
  * @LastEditors: fg
- * @LastEditTime: 2022-04-24 16:31:46
+ * @LastEditTime: 2022-04-26 10:59:58
  * @Description: 类
  */
 
@@ -106,3 +106,10 @@ class AccountingDepartment extends Department{
   }
 }
 
+class Point{
+  x: number;
+  y: number;
+}
+interface Point3d extends Point{
+  z: number;
+}
