@@ -354,3 +354,7 @@ interface Point3d extends Point {
   z: number;
 }
 ```
+
+## [函数](../ts-learn/function.ts)
+
+函数大体上包括有名字的函数以及匿名函数，其中我们还要留意传参的作用域；在 typescript 中我们需要为函数的参数和返回值进行类型
