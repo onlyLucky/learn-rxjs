@@ -1,0 +1,127 @@
+<!--
+ * @Author: fg
+ * @Date: 2022-04-29 09:30:55
+ * @LastEditors: fg
+ * @LastEditTime: 2022-04-29 17:05:28
+ * @Description: content
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="referrer" content="never">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>hello iframe</title>
+  <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    body{
+      width: 100vw;
+      height: 100vh;
+    }
+    iframe{
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+    }
+    iframe::-webkit-scrollbar {/*隐藏滚轮*/
+      display: none;
+      visibility: hidden;
+    }
+
+  #ttt{
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+  <script type="text/javascript">
+    // document.domain = "https://meeting.tencent.com"
+  </script>
+</head>
+<body>
+  <!-- <a href="wemeet://page/inmeeting?meeting_code=475605698&token=&launch_id=7Fj6ePDkjeFkTnyN&meeting_type_flags=0">跳转</a> -->
+  <!-- <iframe style="width: 800px; height: 600px;" src="https://github.com/join"/> -->
+  <!-- src="https://meeting.tencent.com/dm/en63dSAKMlNq?meeting_open_type=1&source=1" -->
+  <!-- <iframe id="iframeTx" frameborder="0"></iframe> -->
+
+  <div id="ttt"></div>
+  <script type="text/javascript">
+    $(document).ready(($)=>{
+      // $
+      getUrl()
+
+    })
+    
+    // function testClick(){
+    //   console.log('dianji')
+    //   console.log(getIFrameDOM("iframeTx").getElementById('passwordTip'))
+    // }
+    // function getIFrameDOM(iID) {
+    //   return document.getElementById(iID).contentWindow.document;
+    // }
+    function getUrl(url) {
+        const http = window.location.protocol === 'http:' ? 'http:' : 'https:'
+        // 调用跨域API
+        console.log(http)
+        $.ajax({
+          type: "get",
+          url: "iframe.html",
+          dataType: 'html', //【jsonp进行跨域请求 只支持get】,
+          success: function(data) { //【成功回调】
+            console.log(data);
+            let html = data
+            // html = html.replace(/data-src/g, 'src').replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/g, '').replace(/https/g, 'http')
+            // let html_src = 'data:text/html;charset=utf-8,' + html;
+
+            // const html_src = html
+            // const iframe = document.getElementById('iframeTx')
+            // console.log(iframe)
+            // iframe.src = html_src
+            // var doc = iframe.contentDocument || iframe.document
+            // doc.write(html_src)
+            // console.log($("#iframeTx").contents().find("#btnWrapCtrl button").eq(2).click())
+           
+            $("#ttt").html(data)
+
+            setTimeout(function (param) {  
+              $("#btnWrapCtrl button").eq(2).click()
+            // $("#iframeTx").contents().find("#btnWrapCtrl button").eq(2).click()
+            },5000)
+            
+            // console.log(doc.getElementById('js_content'))
+            // doc.getElementById('js_content').style.visibility = 'visible'
+          },
+          error: function(xhr, type) { //【失败回调】
+            console.log(xhr,type,'baocuo')
+          }
+        });
+      //   axios.get(realurl).then(
+      // ​    (response) => {
+      //     let html = response.data
+      //     html = html
+      //     .replace(/data-src/g, 'src')
+      //     .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/g, '')
+      //     .replace(/https/g, 'http')
+      //     // let html_src = 'data:text/html;charset=utf-8,' + html;
+      //     const html_src = html
+      //     const iframe = document.getElementById('iFrame')
+      //     iframe.src = html_src
+      //     var doc = iframe.contentDocument || iframe.document
+      //     doc.write(html_src)
+      //     doc.getElementById('js_content').style.visibility = 'visible'
+      //   },
+      //   (err) => {
+      //     console.log(err)
+      //   }
+      // )
+    }
+
+  </script>
+</body>
+
+</html>
