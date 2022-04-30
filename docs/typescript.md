@@ -358,3 +358,71 @@ interface Point3d extends Point {
 ## [函数](../ts-learn/function.ts)
 
 函数大体上包括有名字的函数以及匿名函数，其中我们还要留意传参的作用域；在 typescript 中我们需要为函数的参数和返回值进行类型
+
+```js
+function add(x: number, y: number): number {
+  return x + y;
+}
+
+const myAdd: (x: number, y: number) => number = function (x, y) {
+  return x + y;
+};
+```
+
+- 可选参&默认传参&剩余参数
+
+```js
+function buildName(firstName: string, lastName?: string) {
+  if (lastName) {
+    return firstName + " " + lastName;
+  } else {
+    return firstName;
+  }
+}
+
+function buildNameDefault(firstName: string, lastName = "Smith") {
+  return firstName + " " + lastName;
+}
+
+function buildName1(firstName: string, ...restOfName: string[]) {
+  return firstName + " " + restOfName.join(" ");
+}
+let employeeName = buildName1("Joseph", "Samuel", "Lucas", "MacKinzie");
+```
+
+- this 箭头函数
+
+如果没有规定好 this 指向，他的值只会是 any
+
+```js
+interface Card {
+  suit: string;
+  card: number;
+}
+interface Deck {
+  suits: string[];
+  cards: number;
+  createCardPicker(this: Deck): () => Card;
+}
+const deck: Deck = {
+  suits: ["hearts", "spades", "clubs", "diamonds"],
+  cards: Array(52),
+  createCardPicker: function (this: Deck) {
+    return () => {
+      const pickedCard = Math.floor(Math.random() * 52);
+      const pickedSuit = Math.floor(pickedCard / 13);
+      return { suit: this.suits[pickedSuit], card: pickedCard % 13 };
+    };
+  },
+};
+```
+
+> this 参数在回调函数里
+
+```js
+interface UIElement {
+  addClickListener(onclick: (this: void, e: Event) => void): void;
+}
+```
+
+> 函数重载 传递不同参数执行不同的
