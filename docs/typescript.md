@@ -426,3 +426,88 @@ interface UIElement {
 ```
 
 > 函数重载 传递不同参数执行不同的
+
+## 泛型
+
+> 不仅能够支持当前的数据类型，同时也能支持未来的数据类型，这在创建大型系统时为你提供了十分灵活的功能。
+
+```js
+function identity<T>(arg: T): T {
+  return arg;
+}
+
+const output = identity < string > "myString";
+
+function loggingIdentity<T>(arg: T[]): T[] {
+  console.log(arg.length); // Array has a .length, so no more error
+  return arg;
+}
+```
+
+- 泛型类
+
+> 泛型类看上去与泛型接口差不多.泛型类使用（ <>）括起泛型类型，跟在类名后面。
+
+```js
+function loggingIdentity<T>(arg: T): T {
+  console.log(arg.length); // Error: T doesn't have .length
+  return arg;
+}
+```
+
+- 泛型约束
+  > 时候想操作某类型的一组值，并且我们知道这组值具有什么样的属性。 在 loggingIdentity 例子中，我们想访问 arg 的 length 属性，但是编译器并不能证明每种类型都有 length 属性，所以就报错了
+
+```js
+interface Lengthwise {
+  length: number;
+}
+
+function loggingIdentity<T extends Lengthwise>(arg: T): T {
+  console.log(arg.length);  // Now we know it has a .length property, so no more error
+  return arg;
+}
+```
+
+> 在泛型约束中使用类型参数
+
+```js
+function getProperty(obj: T, key: K) {
+  return obj[key];
+}
+
+let x = { a: 1, b: 2, c: 3, d: 4 };
+
+getProperty(x, "a");
+```
+
+下面是使用原型属性推断并约束构造函数与类实例的关系
+
+```js
+class BeeKeeper {
+  hasMask: boolean;
+}
+
+class ZooKeeper {
+  nameTag: string;
+}
+
+class Animal {
+  numLegs: number;
+}
+
+class Bee extends Animal {
+  keeper: BeeKeeper;
+}
+
+class Lion extends Animal {
+  keeper: ZooKeeper;
+}
+
+function createInstance<A extends Animal>(c: new () => A): A {
+  return new c();
+}
+
+createInstance(Lion).keeper.nameTag;
+createInstance(Bee).keeper.hasMask;
+```
