@@ -517,3 +517,7 @@ createInstance(Bee).keeper.hasMask;
 > 枚举 类似于 Object 有 k ey 和 value，默认的 value 值为 0 依次进行递增，可以自定义 value 的值
 
 ## 高级类型
+
+- 交叉类型
+
+> 多个类型合并为一个类型,把现有的多种类型叠加到一起成为一种类型，它包含了所需的所有类型的特性.
