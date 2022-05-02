@@ -525,3 +525,37 @@ createInstance(Bee).keeper.hasMask;
 - 交叉类型
 
 > 多个类型合并为一个类型,把现有的多种类型叠加到一起成为一种类型，它包含了所需的所有类型的特性.
+
+- 联合类型
+
+> 可以理解为或的感觉，两种类型只要满足其中一个类型即可满足，用竖线（ |）分隔每个类型
+
+- 类型保护与区分类型
+  > 上文中提到的联合类型添加之后内部无法判断是哪种类型的
+
+**用户自定义类型保护**
+
+```js
+function isFish(pet: Fish | Bird): pet is Fish{
+  return (<Fish>pet).swim !==undefined;
+}
+```
+
+**typeof 类型保护**
+
+```js
+function isNumber(x: any): x is number {
+  return typeof x === "number";
+}
+```
+
+**instanceof 类型保护**
+
+> 用于判断当前属于哪一个类接口
+>
+> instanceof 的右侧要求是一个构造函数，TypeScript 将细化为：
+>
+> 1.  此构造函数的 prototype 属性的类型，如果它的类型不为 any 的话
+> 2.  构造签名所返回的类型的联合
+>
+> 以此顺序。

@@ -2,7 +2,7 @@
  * @Author: fg
  * @Date: 2022-05-01 22:33:27
  * @LastEditors: fg
- * @LastEditTime: 2022-05-02 12:37:30
+ * @LastEditTime: 2022-05-02 15:31:50
  * @Description: 高级类型
  */
 
@@ -29,4 +29,13 @@ function padLeft(value: string, padding: string | number){
     return padding + value
   }
   throw new Error(`Expected string or number, got '${padding}'.`);
+}
+
+
+function isFish(pet: Fish | Bird): pet is Fish{
+  return (<Fish>pet).swim !==undefined;
+}
+
+function isNumber(x: any): x is number {
+  return typeof x === "number";
 }
