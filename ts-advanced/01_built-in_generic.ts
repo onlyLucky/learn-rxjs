@@ -2,7 +2,7 @@
  * @Author: fg
  * @Date: 2022-05-02 19:14:59
  * @LastEditors: fg
- * @LastEditTime: 2022-05-02 19:42:18
+ * @LastEditTime: 2022-05-02 20:00:10
  * @Description: ts内置泛型接口
  */
 // Partial
@@ -29,3 +29,16 @@ interface Person{
 
 type RequiredPerson = Required<Person>
 
+// Readonly
+type ReadonlyPerson = Readonly<Person>
+
+
+// Record
+type Partners = 'a'| 'b' | 'c'
+type RecordInfo = Record<Partners,Person>
+
+/* interface RecordInfo = {
+  a: {name: string, age: number},
+  b: {name: string, age: number},
+  c: {name: string, age: number}
+}  */

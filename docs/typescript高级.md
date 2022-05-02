@@ -46,3 +46,27 @@ interface Person {
 
 type RequiredPerson = Required<Person>;
 ```
+
+3. Readonly 只读类型接口
+   > 将传入的类型的所有属性都变为只读属性，得到一个新的类型
+
+```js
+type ReadonlyPerson = Readonly<Person>;
+```
+
+4. Record<key, Type>
+   > 创建一个 key 为 Key 类型、value 为 Type 类型的对象类型
+
+```js
+interface Person {
+  name: string;
+  age: number;
+}
+type Partners = "a" | "b" | "c";
+type RecordInfo = Record<Partners, Person>;
+/* interface RecordInfo = {
+  a: {name: string, age: number},
+  b: {name: string, age: number},
+  c: {name: string, age: number}
+}  */
+```
