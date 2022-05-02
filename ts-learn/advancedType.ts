@@ -2,7 +2,7 @@
  * @Author: fg
  * @Date: 2022-05-01 22:33:27
  * @LastEditors: fg
- * @LastEditTime: 2022-05-01 23:04:04
+ * @LastEditTime: 2022-05-02 12:37:30
  * @Description: 高级类型
  */
 
@@ -21,7 +21,7 @@ function extend<T, U> (first: T, second: U): T&U {
 }
 
 // 联合类型
-function padLeft(value: string, padding: any){
+function padLeft(value: string, padding: string | number){
   if(typeof padding === 'number'){
     return Array(padding+1).join(' ')+value
   }
