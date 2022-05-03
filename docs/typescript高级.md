@@ -18,6 +18,7 @@
 ## 目录
 
 1. [内置泛型接口](#内置泛型接口)
+2. [装饰器](#装饰器)
 
 ## [内置泛型接口](../ts-advanced/01_built-in_generic.ts)
 
@@ -276,3 +277,5 @@ type capitalizeStr = Capitalize<"aa" | "bb">;
 type unCapitalizeStr = Uncapitalize<"Aa" | "Bb">;
 // 'aa'|'bb'
 ```
+
+## [装饰器](../ts-advanced/02_decorator.ts)
