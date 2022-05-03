@@ -119,3 +119,12 @@ type B = Extract<{ name: string; age: number }, string | { name: string }>;
 type C = ({ name: string; age: number } & string) | { name: string };
 // type C = {name: string, age: number}
 ```
+
+9. NonNullable 非空类型
+   > 移除 Type 类型中的 null 和 undefined，得到一个新类型
+
+```ts
+type haveNull = "a" | "b" | undefined;
+type NonNullableDemo = NonNullable<haveNull>;
+// 'a'|'b'
+```

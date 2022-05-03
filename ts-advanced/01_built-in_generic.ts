@@ -2,7 +2,7 @@
  * @Author: fg
  * @Date: 2022-05-02 19:14:59
  * @LastEditors: fg
- * @LastEditTime: 2022-05-03 17:30:19
+ * @LastEditTime: 2022-05-03 19:20:49
  * @Description: ts内置泛型接口
  */
 // Partial
@@ -72,3 +72,7 @@ type B = Extract<{name: string,age: number},string|{name: string}>
 // type B = {name: string,age: number}
 type C = {name: string, age: number} & string | {name: string}
 // type C = {name: string, age: number}
+
+type haveNull = 'a'|'b'|undefined
+type NonNullableDemo = NonNullable<haveNull>
+// 'a'|'b'
