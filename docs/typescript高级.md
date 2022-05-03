@@ -166,3 +166,30 @@ type ConstructorParameters2 = ConstructorParameters<FunctionConstructor>;
 type ConstructorParameters3 = ConstructorParameters<RegExpConstructor>;
 // ConstructorParameters3 = [pattern:string | RegExp, flags?: string]
 ```
+
+12. ReturnType
+    > 得到一个有函数的返回值类型组成的新类型
+
+```ts
+declare function fun(): { a: number; b: string };
+type ReturnTypeDemo1 = ReturnType<() => string>;
+//  ReturnTypeDemo1 = string
+
+type ReturnTypeDemo2 = ReturnType<(s: string) => void>;
+// ReturnTypeDemo2 = void
+
+type ReturnTypeDemo3 = ReturnType<<T>() => T>;
+// ReturnTypeDemo3 = unknown
+
+type ReturnTypeDemo4 = ReturnType<<T extends U, U extends number[]>() => T>;
+// ReturnTypeDemo4 = number[]
+
+type ReturnTypeDemo5 = ReturnType<typeof fun>;
+// ReturnTypeDemo5 = {a: number; b: string}
+
+type ReturnTypeDemo6 = ReturnType<any>;
+// ReturnTypeDemo6 = any
+
+type ReturnTypeDemo7 = ReturnType<never>;
+// ReturnTypeDemo7 = never
+```

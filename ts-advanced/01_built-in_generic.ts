@@ -2,7 +2,7 @@
  * @Author: fg
  * @Date: 2022-05-02 19:14:59
  * @LastEditors: fg
- * @LastEditTime: 2022-05-03 21:09:33
+ * @LastEditTime: 2022-05-03 21:33:05
  * @Description: ts内置泛型接口
  */
 // Partial
@@ -105,3 +105,26 @@ type ConstructorParameters2 = ConstructorParameters<FunctionConstructor>
 
 type ConstructorParameters3 = ConstructorParameters<RegExpConstructor>
 // ConstructorParameters3 = [pattern:string | RegExp, flags?: string]
+
+
+declare function fun ():{a: number; b: string}
+type ReturnTypeDemo1 = ReturnType<()=>string>
+//  ReturnTypeDemo1 = string
+
+type ReturnTypeDemo2 = ReturnType<(s: string)=>void>
+// ReturnTypeDemo2 = void
+
+type ReturnTypeDemo3 = ReturnType<<T>()=>T>
+// ReturnTypeDemo3 = unknown
+
+type ReturnTypeDemo4 = ReturnType<<T extends U, U extends number[]>()=>T>
+// ReturnTypeDemo4 = number[]
+
+type ReturnTypeDemo5 = ReturnType<typeof fun>
+// ReturnTypeDemo5 = {a: number; b: string}
+
+type ReturnTypeDemo6 = ReturnType<any>
+// ReturnTypeDemo6 = any
+
+type ReturnTypeDemo7 = ReturnType<never>
+// ReturnTypeDemo7 = never
