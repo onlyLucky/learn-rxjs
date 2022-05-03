@@ -260,3 +260,11 @@ type UpperStr = Uppercase<"a" | "b">;
 type lowerStr = Lowercase<"A" | "B">;
 //'a'|'b'
 ```
+
+19. Capitalize
+    > 将 string 字面量类型 首字母转化为大写，得到一个新的类型；
+
+```ts
+type capitalizeStr = Capitalize<"aa" | "bb">;
+//  'Aa' | 'Bb'
+```

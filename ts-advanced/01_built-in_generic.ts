@@ -2,7 +2,7 @@
  * @Author: fg
  * @Date: 2022-05-02 19:14:59
  * @LastEditors: fg
- * @LastEditTime: 2022-05-03 23:40:59
+ * @LastEditTime: 2022-05-03 23:43:32
  * @Description: ts内置泛型接口
  */
 // Partial
@@ -167,3 +167,5 @@ type UpperStr = Uppercase<'a'|'b'>
 type lowerStr = Lowercase<'A' | 'B'> 
 //'a'|'b'
 
+type capitalizeStr = Capitalize<'aa'|'bb'>
+//  'Aa' | 'Bb'
