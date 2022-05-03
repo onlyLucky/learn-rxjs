@@ -2,7 +2,7 @@
  * @Author: fg
  * @Date: 2022-05-02 19:14:59
  * @LastEditors: fg
- * @LastEditTime: 2022-05-03 15:21:17
+ * @LastEditTime: 2022-05-03 17:30:19
  * @Description: ts内置泛型接口
  */
 // Partial
@@ -62,3 +62,13 @@ type OmitDemo = Omit<PickEg,'name'| 'interests'>
   age: number,
   gender: 1|2
 } */
+
+type ExcludeDemo = Exclude<'a'|'b'|'c','c'>
+//  type ExcludeDemo = 'a' | 'b'
+
+type A = Extract<'a'|'b'|((x: string)=>void),Function>
+//  type A = (x: string)=>void
+type B = Extract<{name: string,age: number},string|{name: string}>
+// type B = {name: string,age: number}
+type C = {name: string, age: number} & string | {name: string}
+// type C = {name: string, age: number}

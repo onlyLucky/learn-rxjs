@@ -99,3 +99,23 @@ type OmitDemo = Omit<PickEg, "name" | "interests">;
   gender: 1|2
 } */
 ```
+
+7. Exclude<UnionType,ExcludeMember>
+   > 从联合类型 UnionType 中移除某些类型，得到一个新的类型
+
+```ts
+type ExcludeDemo = Exclude<"a" | "b" | "c", "c">;
+//  type ExcludeDemo = 'a' | 'b'
+```
+
+8. Extract<Type,Union>
+   > 提取出 Type 类型中的能符合 Union 联合类型的类型，得到一个新的类型。和&类似，连接两个类型
+
+```ts
+type A = Extract<"a" | "b" | ((x: string) => void), Function>;
+//  type A = (x: string)=>void
+type B = Extract<{ name: string; age: number }, string | { name: string }>;
+// type B = {name: string,age: number}
+type C = ({ name: string; age: number } & string) | { name: string };
+// type C = {name: string, age: number}
+```
