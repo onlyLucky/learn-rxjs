@@ -2,7 +2,7 @@
  * @Author: fg
  * @Date: 2022-05-02 19:14:59
  * @LastEditors: fg
- * @LastEditTime: 2022-05-02 20:00:10
+ * @LastEditTime: 2022-05-03 15:21:17
  * @Description: ts内置泛型接口
  */
 // Partial
@@ -42,3 +42,17 @@ type RecordInfo = Record<Partners,Person>
   b: {name: string, age: number},
   c: {name: string, age: number}
 }  */
+
+// Pick
+interface PickEg {
+  name: string,
+  age: number, 
+  gender: 1|2，
+  interests: string[]
+}
+
+type PickedDemo = Pick<PickEg,'name'| 'interests'>
+/* interface PickedDemo {
+  name: string,
+  interests: string[]
+} */

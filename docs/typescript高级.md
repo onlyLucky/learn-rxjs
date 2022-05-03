@@ -70,3 +70,21 @@ type RecordInfo = Record<Partners, Person>;
   c: {name: string, age: number}
 }  */
 ```
+
+5. Pick<Type,Keys>
+   > 挑选出 Type 类型中的 Keys 类型的属性，得到一个新的类型。一般来说，Keys 为联合类型
+
+```ts
+interface PickEg {
+  name: string,
+  age: number,
+  gender: 1|2，
+  interests: string[]
+}
+
+type PickedDemo = Pick<PickEg,'name'| 'interests'>
+/* interface PickedDemo {
+  name: string,
+  interests: string[]
+} */
+```
