@@ -128,3 +128,27 @@ type haveNull = "a" | "b" | undefined;
 type NonNullableDemo = NonNullable<haveNull>;
 // 'a'|'b'
 ```
+
+10. Parameters
+    > 提取函数类型（或 any，never 等类型）中的参数，得到一个新的元组类型（或 never）
+
+```ts
+declare function fun(arg: { a: number; b: string }): void;
+type ParametersDemo1 = Parameters<() => string>;
+// ParametersDemo1 = []
+
+type ParametersDemo2 = Parameters<(s: string) => void>;
+// ParametersDemo2 = [s: string]
+
+type ParametersDemo3 = Parameters<<T>(arg: T) => T>;
+// ParametersDemo3 = [arg: unknown]
+
+type ParametersDemo4 = Parameters<typeof fun>;
+// ParametersDemo4 = [arg: {a:number;b:string}]
+
+type ParametersDemo5 = Parameters<any>;
+//  ParametersDemo5 = unknown[]
+
+type ParametersDemo6 = Parameters<never>;
+// ParametersDemo6 = never
+```

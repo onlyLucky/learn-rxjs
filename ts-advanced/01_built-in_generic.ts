@@ -2,7 +2,7 @@
  * @Author: fg
  * @Date: 2022-05-02 19:14:59
  * @LastEditors: fg
- * @LastEditTime: 2022-05-03 19:20:49
+ * @LastEditTime: 2022-05-03 20:57:44
  * @Description: ts内置泛型接口
  */
 // Partial
@@ -76,3 +76,22 @@ type C = {name: string, age: number} & string | {name: string}
 type haveNull = 'a'|'b'|undefined
 type NonNullableDemo = NonNullable<haveNull>
 // 'a'|'b'
+
+declare function fun(arg: {a:number;b:string}):void;
+type ParametersDemo1 = Parameters<()=>string>;
+// ParametersDemo1 = []
+
+type ParametersDemo2 = Parameters<(s: string)=>void>;
+// ParametersDemo2 = [s: string]
+
+type ParametersDemo3 = Parameters<<T>(arg: T)=>T>
+// ParametersDemo3 = [arg: unknown]
+
+type ParametersDemo4 = Parameters<typeof fun>
+// ParametersDemo4 = [arg: {a:number;b:string}]
+
+type ParametersDemo5 = Parameters<any>
+//  ParametersDemo5 = unknown[]
+
+type ParametersDemo6 = Parameters<never>
+// ParametersDemo6 = never
