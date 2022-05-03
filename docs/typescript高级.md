@@ -234,3 +234,13 @@ function omitThisParameter(this: Number) {
 const P: OmitThisParameter<typeof omitThisParameter> =
   omitThisParameter.bind(5);
 ```
+
+16. ThisType
+    > 不会返回新的类型，而是用于指定上下文中的 this 的类型为 Type。
+
+```ts
+type ObjectDescriptor<D, M> = {
+  data?: D;
+  methods?: M & ThisType<D & M>; //methods 中的this类型为 D & M
+};
+```

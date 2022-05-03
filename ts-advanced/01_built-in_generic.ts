@@ -2,7 +2,7 @@
  * @Author: fg
  * @Date: 2022-05-02 19:14:59
  * @LastEditors: fg
- * @LastEditTime: 2022-05-03 23:06:03
+ * @LastEditTime: 2022-05-03 23:21:12
  * @Description: ts内置泛型接口
  */
 // Partial
@@ -155,3 +155,8 @@ function omitThisParameter(this: Number){
   return this.toString(16)
 }
 const P: OmitThisParameter<typeof omitThisParameter> = omitThisParameter.bind(5)
+
+type ObjectDescriptor<D, M> = {
+  data?: D;
+  methods?: M & ThisType<D & M>//methods 中的this类型为 D & M
+}
