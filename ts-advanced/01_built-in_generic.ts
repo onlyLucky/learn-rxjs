@@ -2,7 +2,7 @@
  * @Author: fg
  * @Date: 2022-05-02 19:14:59
  * @LastEditors: fg
- * @LastEditTime: 2022-05-03 22:59:23
+ * @LastEditTime: 2022-05-03 23:06:03
  * @Description: ts内置泛型接口
  */
 // Partial
@@ -149,3 +149,9 @@ function thisDemo(this: Number){
 }
 type ThisParameterTypeDemo = ThisParameterType<typeof thisDemo>
 //  ThisParameterTypeDemo = Number
+
+
+function omitThisParameter(this: Number){
+  return this.toString(16)
+}
+const P: OmitThisParameter<typeof omitThisParameter> = omitThisParameter.bind(5)

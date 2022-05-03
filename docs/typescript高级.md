@@ -223,3 +223,14 @@ function thisDemo(this: Number) {
 type ThisParameterTypeDemo = ThisParameterType<typeof thisDemo>;
 //  ThisParameterTypeDemo = Number
 ```
+
+15. OmitThisParameter
+    > 移除函数类型 Type 中的 this 参数，得到一个新的类型。如果没有 this 参数，则直接返回 Type 类型，如果有 this 参数，则返回一个移除了 this 参数的新的函数类型
+
+```ts
+function omitThisParameter(this: Number) {
+  return this.toString(16);
+}
+const P: OmitThisParameter<typeof omitThisParameter> =
+  omitThisParameter.bind(5);
+```
