@@ -268,3 +268,11 @@ type lowerStr = Lowercase<"A" | "B">;
 type capitalizeStr = Capitalize<"aa" | "bb">;
 //  'Aa' | 'Bb'
 ```
+
+20. Uncapitalize
+    > 将 string 字面量类型 首字母转化为小写，得到一个新的类型；
+
+```ts
+type unCapitalizeStr = Uncapitalize<"Aa" | "Bb">;
+// 'aa'|'bb'
+```
