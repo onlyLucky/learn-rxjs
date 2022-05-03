@@ -2,7 +2,7 @@
  * @Author: fg
  * @Date: 2022-05-02 19:14:59
  * @LastEditors: fg
- * @LastEditTime: 2022-05-03 23:21:12
+ * @LastEditTime: 2022-05-03 23:24:54
  * @Description: ts内置泛型接口
  */
 // Partial
@@ -160,3 +160,6 @@ type ObjectDescriptor<D, M> = {
   data?: D;
   methods?: M & ThisType<D & M>//methods 中的this类型为 D & M
 }
+
+type UpperStr = Uppercase<'a'|'b'>
+// UpperStr = 'A' | 'B'

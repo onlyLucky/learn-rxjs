@@ -244,3 +244,11 @@ type ObjectDescriptor<D, M> = {
   methods?: M & ThisType<D & M>; //methods 中的this类型为 D & M
 };
 ```
+
+17. Uppercase
+    > 将 string 字面量类型 全部转化为大写，得到一个新的类型；
+
+```ts
+type UpperStr = Uppercase<"a" | "b">;
+// UpperStr = 'A' | 'B'
+```
