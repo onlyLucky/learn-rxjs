@@ -2,7 +2,7 @@
  * @Author: fg
  * @Date: 2022-05-02 19:14:59
  * @LastEditors: fg
- * @LastEditTime: 2022-05-03 23:24:54
+ * @LastEditTime: 2022-05-03 23:40:59
  * @Description: ts内置泛型接口
  */
 // Partial
@@ -163,3 +163,7 @@ type ObjectDescriptor<D, M> = {
 
 type UpperStr = Uppercase<'a'|'b'>
 // UpperStr = 'A' | 'B'
+
+type lowerStr = Lowercase<'A' | 'B'> 
+//'a'|'b'
+

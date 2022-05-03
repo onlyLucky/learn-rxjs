@@ -252,3 +252,11 @@ type ObjectDescriptor<D, M> = {
 type UpperStr = Uppercase<"a" | "b">;
 // UpperStr = 'A' | 'B'
 ```
+
+18. Lowercase
+    > 将 string 字面量类型全部转化为小写，得到一个类型
+
+```ts
+type lowerStr = Lowercase<"A" | "B">;
+//'a'|'b'
+```
