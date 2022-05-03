@@ -152,3 +152,17 @@ type ParametersDemo5 = Parameters<any>;
 type ParametersDemo6 = Parameters<never>;
 // ParametersDemo6 = never
 ```
+
+11. ConstructorParameters
+    > 提取构造函数中的所有参数，得到一个新的元组或数组类型（或 never）。
+
+```ts
+type ConstructorParameters1 = ConstructorParameters<ErrorConstructor>;
+// ConstructorParameters1 = [message?:string]
+
+type ConstructorParameters2 = ConstructorParameters<FunctionConstructor>;
+// ConstructorParameters2 = string[]
+
+type ConstructorParameters3 = ConstructorParameters<RegExpConstructor>;
+// ConstructorParameters3 = [pattern:string | RegExp, flags?: string]
+```

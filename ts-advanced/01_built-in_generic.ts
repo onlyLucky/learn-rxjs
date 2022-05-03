@@ -2,7 +2,7 @@
  * @Author: fg
  * @Date: 2022-05-02 19:14:59
  * @LastEditors: fg
- * @LastEditTime: 2022-05-03 20:57:44
+ * @LastEditTime: 2022-05-03 21:09:33
  * @Description: ts内置泛型接口
  */
 // Partial
@@ -95,3 +95,13 @@ type ParametersDemo5 = Parameters<any>
 
 type ParametersDemo6 = Parameters<never>
 // ParametersDemo6 = never
+
+
+type ConstructorParameters1 = ConstructorParameters<ErrorConstructor>
+// ConstructorParameters1 = [message?:string]
+
+type ConstructorParameters2 = ConstructorParameters<FunctionConstructor>
+// ConstructorParameters2 = string[]
+
+type ConstructorParameters3 = ConstructorParameters<RegExpConstructor>
+// ConstructorParameters3 = [pattern:string | RegExp, flags?: string]
