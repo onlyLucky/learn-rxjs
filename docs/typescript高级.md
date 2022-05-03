@@ -193,3 +193,33 @@ type ReturnTypeDemo6 = ReturnType<any>;
 type ReturnTypeDemo7 = ReturnType<never>;
 // ReturnTypeDemo7 = never
 ```
+
+13. InstanceType
+    > 得到 Type 类型中的构造函数实例的类型
+
+```ts
+class ClassDemo {
+  x = 0;
+  y = 0;
+}
+
+type InstanceTypeDemo1 = InstanceType<typeof ClassDemo>;
+// InstanceTypeDemo1 = ClassDemo
+
+type InstanceTypeDemo2 = InstanceType<any>;
+// InstanceTypeDemo2 = any
+
+type InstanceTypeDemo3 = InstanceType<never>;
+// InstanceTypeDemo3 = never
+```
+
+14. ThisParameterType
+    > 得到函数类型 Type 中的 this 参数的类型，如果没有 this 参数，则为 unknown 类型。
+
+```ts
+function thisDemo(this: Number) {
+  return this.toString(16);
+}
+type ThisParameterTypeDemo = ThisParameterType<typeof thisDemo>;
+//  ThisParameterTypeDemo = Number
+```

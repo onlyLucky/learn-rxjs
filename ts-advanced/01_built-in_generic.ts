@@ -2,7 +2,7 @@
  * @Author: fg
  * @Date: 2022-05-02 19:14:59
  * @LastEditors: fg
- * @LastEditTime: 2022-05-03 21:33:05
+ * @LastEditTime: 2022-05-03 22:59:23
  * @Description: ts内置泛型接口
  */
 // Partial
@@ -128,3 +128,24 @@ type ReturnTypeDemo6 = ReturnType<any>
 
 type ReturnTypeDemo7 = ReturnType<never>
 // ReturnTypeDemo7 = never
+
+
+class ClassDemo {
+  x = 0;
+  y = 0;
+}
+
+type InstanceTypeDemo1 = InstanceType<typeof ClassDemo>
+// InstanceTypeDemo1 = ClassDemo
+
+type InstanceTypeDemo2 = InstanceType<any>
+// InstanceTypeDemo2 = any
+
+type InstanceTypeDemo3 = InstanceType<never>
+// InstanceTypeDemo3 = never
+
+function thisDemo(this: Number){
+  return this.toString(16)
+}
+type ThisParameterTypeDemo = ThisParameterType<typeof thisDemo>
+//  ThisParameterTypeDemo = Number
