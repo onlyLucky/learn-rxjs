@@ -279,3 +279,30 @@ type unCapitalizeStr = Uncapitalize<"Aa" | "Bb">;
 ```
 
 ## [装饰器](../ts-advanced/02_decorator.ts)
+
+> 装饰器可以为类提供附加功能。在 JS 中，装饰器仍是第 2 阶段的提案，而在 TS 中，可作为一项实验性功能来使用，增强类的功能。
+
+**启动装饰器**
+
+由于装饰器是一项实验性功能，因此需要在命令行 或 tsconfig.json 配置文件中启用。
+
+1. 命令行启动
+
+这一步需要安装 tsc，typescript 环境，编辑时，加入--experimentalDecorators：
+
+```shell
+npx tsc --target ES5 --experimentalDecorators
+```
+
+2. 在 tsconfig.json 中启用
+
+这里只需要更改配置文件即可：
+
+```json
+{
+  "compilerOptions": {
+    "target": "ES5",
+    "experimentalDecorators": true
+  }
+}
+```
