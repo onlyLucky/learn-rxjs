@@ -56,3 +56,9 @@ type PickedDemo = Pick<PickEg,'name'| 'interests'>
   name: string,
   interests: string[]
 } */
+
+type OmitDemo = Omit<PickEg,'name'| 'interests'>
+/* interface OmitDemo {
+  age: number,
+  gender: 1|2
+} */

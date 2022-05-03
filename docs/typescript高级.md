@@ -88,3 +88,14 @@ type PickedDemo = Pick<PickEg,'name'| 'interests'>
   interests: string[]
 } */
 ```
+
+6. Omit<Type,Keys>
+   > 与 Pick 相反，移除掉 Type 类型中的 Keys 类型的属性，得到一个由剩余的属性组成一个新的类型
+
+```js
+type OmitDemo = Omit<PickEg, "name" | "interests">;
+/* interface OmitDemo {
+  age: number,
+  gender: 1|2
+} */
+```
