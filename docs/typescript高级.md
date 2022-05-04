@@ -306,3 +306,22 @@ npx tsc --target ES5 --experimentalDecorators
   }
 }
 ```
+
+> 装饰器是一个函数，可以被附加到类的声明、方法、存取器、属性甚至参数上，从而提供附加功能。装饰器的形式为`@func`，其中 func 是一个函数。例如，我们给出一个`@sealed`装饰器，则应该有相应的 sealed 函数
+
+### 装饰器工厂
+
+> 装饰器工厂时一个函数，其返回值是一个装饰器。我们可以调用装饰器工厂函数，来得到装饰器，即形式为`@ decoratorFactory( )` , 注意与直接写装饰器形式的区别。**装饰器形式无法手动传入参数，但是装饰器工厂可以**
+
+装饰器工厂返回值的类型为装饰器类型，下面是 TS 内置提供：
+
+- 类装饰器类型：ClassDecorator
+- 方法装饰器类型： MethodDecorator
+- 属性装饰器： PropertyDecorator
+- 参数装饰器： ParameterDecorator
+
+```ts
+function classFactory(): ClassDecorator {
+  return function (target) {};
+}
+```
