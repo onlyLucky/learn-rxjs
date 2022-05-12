@@ -309,7 +309,7 @@ npx tsc --target ES5 --experimentalDecorators
 
 > 装饰器是一个函数，可以被附加到类的声明、方法、存取器、属性甚至参数上，从而提供附加功能。装饰器的形式为`@func`，其中 func 是一个函数。例如，我们给出一个`@sealed`装饰器，则应该有相应的 sealed 函数
 
-### 装饰器工厂
+### 1. 装饰器工厂
 
 > 装饰器工厂时一个函数，其返回值是一个装饰器。我们可以调用装饰器工厂函数，来得到装饰器，即形式为`@ decoratorFactory( )` , 注意与直接写装饰器形式的区别。**装饰器形式无法手动传入参数，但是装饰器工厂可以**
 
@@ -326,7 +326,7 @@ function classFactory(): ClassDecorator {
 }
 ```
 
-### 装饰器组合
+### 2. 装饰器组合
 
 > 多个装饰器可以组合使用，可以写在多行
 
@@ -343,9 +343,39 @@ x
 
 > 装饰器的执行顺序是由内而外的，即内层装饰器函数先执行，再将得到的结果传给外层装饰器调用。但是如果我们用的是装饰器工厂，则**工厂函数会自上而下先执行，之后装饰器函数则下而上执行**。
 
-### 装饰器的执行顺序
+### 3. 装饰器的执行顺序
 
 - 参数装饰器，然后依次是方法装饰器，存取器装饰器，或属性装饰器应用到每个实例成员;
 - 参数装饰器，然后依次是方法装饰器，存取器装饰器，或属性装饰器应用到每个静态成员;
 - 参数装饰器应用到构造函数;
 - 类装饰器应用到类;
+
+### 4. 类装饰器
+
+类装饰器是我们最常使用到的，它的通常作用是，为该类扩展功能
+
+1. 类装饰器有且只有一个参数，参数为类的构造函数 constructor
+2. 如果类装饰器返回一个值，它会使用提供的构造函数来替换类的声明
+
+> 如果**你要返回一个新的构造函数，你必须注意处理好原来的原型链**。 在运行时的装饰器调用逻辑中不会为你做这些。—— 官方文档
+
+```ts
+const getPositionDecorator: ClassDecorator = (constructor: Function) => {
+  constructor.prototype.getPosition = () => {
+    return [100, 200];
+  };
+};
+const addPetrolDecorator: ClassDecorator = (constructor: Function) => {
+  constructor.prototype.addPetrol = () => {
+    console.log(constructor.name);
+  };
+};
+
+@getPositionDecorator
+@addPetrolDecorator
+class BaseClass {
+  constructor(pos: Object) {
+    this.pos = pos;
+  }
+}
+```
