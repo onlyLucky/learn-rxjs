@@ -2,7 +2,7 @@
  * @Author: fg
  * @Date: 2022-05-03 23:51:44
  * @LastEditors: fg
- * @LastEditTime: 2022-05-07 11:28:02
+ * @LastEditTime: 2022-05-12 09:52:12
  * @Description: 装饰器
  */
 
@@ -46,3 +46,23 @@ class ExampleClass {
 // 'second(): factory evaluated'
 // 'second(): called'
 // 'first(): called'
+
+const getPositionDecorator: ClassDecorator = (constructor: Function)=>{
+  constructor.prototype.getPosition = () => {
+    return [100,200]
+  }
+}
+const addPetrolDecorator: ClassDecorator = (constructor: Function)=>{
+  constructor.prototype.addPetrol = ()=>{
+    console.log(constructor.name)
+  }
+}
+
+@getPositionDecorator
+@addPetrolDecorator
+class BaseClass{
+  constructor(pos: Object){
+    this.pos = pos
+  }
+}
+
