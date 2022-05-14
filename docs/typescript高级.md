@@ -379,3 +379,41 @@ class BaseClass {
   }
 }
 ```
+
+> 多个装饰器叠加的时候，执行顺序为离被装饰对象越近的装饰器越先执行。
+
+**装饰器功能之——重载构造函数**
+
+```ts
+function classDecorator<T extends { new (...args: any[]): {} }>(
+  constructor: T
+) {
+  return class extends constructor {
+    newProperty = "new property";
+    hello = "override";
+  };
+}
+
+@classDecorator
+class Greeter {
+  property = "property";
+  hello: string;
+  constructor(m: string) {
+    this.hello = m;
+  }
+}
+```
+
+### 5.方法装饰器
+
+方法装饰器接受三个参数：
+
+1. 对于静态方法，第一个参数为类的构造函数。对于实例方法，为类的原型对象。
+2. 第二个参数为方法名。
+3. 第三个参数为方法描述符。
+4. 方法装饰器可以有返回值，返回值会作为方法的属性描述符
+
+装饰器功能之——能力增强
+
+
+
