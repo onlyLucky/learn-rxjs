@@ -434,4 +434,34 @@ function enumerable(value: boolean) {
 }
 ```
 
+### 6.存取器装饰器
 
+> TS不允许同时装饰同一个成员的 get 和 set ，只能按照书写的顺序装饰最先出现的那一个，因为get和set结合起来，属于同一个属性描述符。
+
+存取器装饰器带有三个参数
+
+- 如果被装饰的是静态成员，则第一个参数为类的构造函数；如果被装饰的是实例成员，则第一个参数是实例成员的原型 prototype ；
+
+- 该成员的名字；
+
+- 该成员的属性描述符。
+
+> 如果存取器装饰器有返回值，则该返回值被用作该成员的属性描述符；如果target设置的版本低于ES5，则返回值会被忽略，成员的属性描述符也为undefined。
+
+```ts
+class AccessorsDemo {
+  // 属性
+  constructor(public name: string, private _age: number) { }
+  @configurable(false)
+  get age() {
+    return this._age
+  }
+}
+
+function configurable(val: boolean) {
+  return function (target: AccessorsDemo, key: string, desc: PropertyDescriptor) {
+    console.log(key, target, desc)
+    desc.configurable = val
+  }
+}
+```
