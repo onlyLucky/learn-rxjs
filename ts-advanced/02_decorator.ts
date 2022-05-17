@@ -2,7 +2,7 @@
  * @Author: fg
  * @Date: 2022-05-03 23:51:44
  * @LastEditors: fg
- * @LastEditTime: 2022-05-12 12:51:29
+ * @LastEditTime: 2022-05-17 09:59:20
  * @Description: 装饰器
  */
 
@@ -47,31 +47,31 @@ class ExampleClass {
 // 'second(): called'
 // 'first(): called'
 
-const getPositionDecorator: ClassDecorator = (constructor: Function)=>{
-  console.log(constructor.prototype,'constructor')
+const getPositionDecorator: ClassDecorator = (constructor: Function) => {
+  console.log(constructor.prototype, 'constructor')
   constructor.prototype.getPosition = () => {
-    return [100,200]
+    return [100, 200]
   }
 }
-const addPetrolDecorator: ClassDecorator = (constructor: Function)=>{
-  constructor.prototype.addPetrol = ()=>{
+const addPetrolDecorator: ClassDecorator = (constructor: Function) => {
+  constructor.prototype.addPetrol = () => {
     console.log(constructor.name)
   }
 }
 
 @getPositionDecorator
 @addPetrolDecorator
-class BaseClass{
+class BaseClass {
   pos: {}
-  constructor(pos: Object){
+  constructor(pos: Object) {
     this.pos = pos
   }
 }
 
-function classDecorator<T extends {new(...args:any[]):{}}>(constructor:T) {
+function classDecorator<T extends { new(...args: any[]): {} }>(constructor: T) {
   return class extends constructor {
-      newProperty = "new property";
-      hello = "override";
+    newProperty = "new property";
+    hello = "override";
   }
 }
 
@@ -80,8 +80,8 @@ class Greeter {
   property = "property";
   hello: string;
   constructor(m: string) {
-      this.hello = m;
-      this.test = 123
+    this.hello = m;
+    this.test = 123
   }
 }
 
@@ -89,19 +89,20 @@ let greeterDemo = new Greeter('test')
 console.log(greeterDemo)
 
 
-class FunctionGreeter{
+class FunctionGreeter {
   greeting: string;
-  constructor(message: string){
+  constructor(message: string) {
     this.greeting = message
   }
   @enumerable(false)
-  greet                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          (){
+  greet() {
     return 'hello, ' + this.greeting
   }
 }
 
-function enumerable(value: boolean){
-  return function(target: any,propertyKey: string,descriptor: PropertyDecorator){
+function enumerable(value: boolean) {
+  return function (target: any, propertyKey: string, descriptor: PropertyDecorator) {
     console.log(target, propertyKey, descriptor)
+    descriptor.enumerable = val
   }
 }
