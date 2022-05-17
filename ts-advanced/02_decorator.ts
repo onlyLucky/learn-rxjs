@@ -2,9 +2,11 @@
  * @Author: fg
  * @Date: 2022-05-03 23:51:44
  * @LastEditors: fg
- * @LastEditTime: 2022-05-17 10:20:49
+ * @LastEditTime: 2022-05-17 11:02:52
  * @Description: 装饰器
  */
+
+import "reflect-metadata"
 
 /* function classFactory (): ClassDecorator {
   return function (target) {
@@ -122,3 +124,28 @@ function configurable(val: boolean) {
     desc.configurable = val
   }
 }
+
+class AttributeDemo {
+  @format("Hello, %s")
+  greeting: string
+  constructor(message: string) {
+    this.greeting = message
+  }
+  greet() {
+    let formatString = getFormat(this, "greeting")
+    console.log(formatString)
+    return formatString.replace("%s", this.greeting)
+  }
+}
+
+var formatMetadataKey = Symbol("format")
+
+function format(formatString: string) {
+  console.log(formatString, formatMetadataKey)
+  return Reflect.metadata(formatMetadataKey, formatString)
+}
+function getFormat(target: any, propertyKey: string) {
+  return Reflect.getMetadata(formatMetadataKey, target, propertyKey)
+}
+let attributeDemo = new AttributeDemo('test')
+console.log(attributeDemo.greet())
