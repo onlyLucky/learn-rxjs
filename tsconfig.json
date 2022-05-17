@@ -3,7 +3,10 @@
     "target": "ES5",
     "useDefineForClassFields": true,
     "module": "ESNext",
-    "lib": ["ESNext", "DOM"],
+    "lib": [
+      "ESNext",
+      "DOM"
+    ],
     "moduleResolution": "Node",
     "strict": true,
     "sourceMap": true,
@@ -14,6 +17,9 @@
     "noUnusedParameters": true,
     "experimentalDecorators": true,
     "noImplicitReturns": true,
+    "emitDecoratorMetadata": true
   },
-  "include": ["src"]
+  "include": [
+    "src"
+  ]
 }
