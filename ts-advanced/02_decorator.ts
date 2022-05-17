@@ -2,7 +2,7 @@
  * @Author: fg
  * @Date: 2022-05-03 23:51:44
  * @LastEditors: fg
- * @LastEditTime: 2022-05-17 09:59:20
+ * @LastEditTime: 2022-05-17 10:20:49
  * @Description: 装饰器
  */
 
@@ -103,6 +103,22 @@ class FunctionGreeter {
 function enumerable(value: boolean) {
   return function (target: any, propertyKey: string, descriptor: PropertyDecorator) {
     console.log(target, propertyKey, descriptor)
-    descriptor.enumerable = val
+    descriptor.enumerable = value
+  }
+}
+
+class AccessorsDemo {
+  // 属性
+  constructor(public name: string, private _age: number) { }
+  @configurable(false)
+  get age() {
+    return this._age
+  }
+}
+
+function configurable(val: boolean) {
+  return function (target: AccessorsDemo, key: string, desc: PropertyDescriptor) {
+    console.log(key, target, desc)
+    desc.configurable = val
   }
 }
