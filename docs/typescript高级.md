@@ -414,6 +414,24 @@ class Greeter {
 4. 方法装饰器可以有返回值，返回值会作为方法的属性描述符
 
 装饰器功能之——能力增强
+```ts
+class FunctionGreeter {
+  greeting: string;
+  constructor(message: string) {
+    this.greeting = message
+  }
+  @enumerable(false)
+  greet() {
+    return 'hello, ' + this.greeting
+  }
+}
 
+function enumerable(value: boolean) {
+  return function (target: any, propertyKey: string, descriptor: PropertyDecorator) {
+    console.log(target, propertyKey, descriptor)
+    descriptor.enumerable = val
+  }
+}
+```
 
 
