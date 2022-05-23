@@ -2,7 +2,7 @@
  * @Author: fg
  * @Date: 2022-05-23 10:12:26
  * @LastEditors: fg
- * @LastEditTime: 2022-05-23 11:46:54
+ * @LastEditTime: 2022-05-23 14:48:15
  * @Description: 实现 Pick
  */
 
@@ -31,8 +31,8 @@ export type {
 /* keyof  keyof T 类型被视为字符串的子类型。*/
 
 interface Person {
-  name: string
-  age: number
+  name: string,
+  age: number,
   location: string
 }
 type K1 = keyof Person // "name" | "age" | "location"
