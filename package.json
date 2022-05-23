@@ -19,5 +19,8 @@
   },
   "standard": {
     "parser": "babel-eslint"
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint"
   }
 }
