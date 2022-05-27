@@ -7,3 +7,6 @@ app.innerHTML = `
   <h1>Hello typescript!</h1>
 `
 console.log('hello vite')
+
+
+
