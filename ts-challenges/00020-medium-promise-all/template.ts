@@ -10,8 +10,11 @@ Promise.all
 解题思路
 
 - value的类型可以为任意类型的数组
+```ts
 declare function PromiseAll(values: unknown[]): any
-- 在外部使用 as const 操作后，相应的类型会变为 readonly 的，所以 values 接收的时候，也需要加上 readonly 修饰符
+```
+- 在外部使用 as const 操作后，相应的类型会变为 readonly 的，所以 values 接收的时候，也需要加上 
+readonly 修饰符
 ```ts
 declare function PromiseAll(values: readonly unknown[]): any
 -传入的 values 类型，后面也会用到，所以使用泛型 T 来表示
@@ -27,12 +30,20 @@ Promise<
   }
 >
 ```
-
-*/
-
-declare function PromiseAll<T extends unknown[]>(values: readonly [...T]):  
+- 如果遍历的内容 T[P] 是 Promise 类型的话，则返回该 Promise 的入参类型
+```ts
+declare function PromiseAll<T extends unknown[]>(values: readonly [...T]):
 Promise<
   {
-    [P in keyof T]: T[P]
+    [P in keyof T]: T[P] extends Promise<infer R> ? R : T[P]
+  }
+>
+```
+*/
+
+declare function PromiseAll<T extends unknown[]>(values: readonly [...T]):
+Promise<
+  {
+    [P in keyof T]: T[P] extends Promise<infer R> ? R : T[P]
   }
 >
