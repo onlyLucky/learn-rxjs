@@ -54,3 +54,17 @@ $$ x^{y^z}=(1+{\rm e}^x)^{-2xy^w} $$
 $$ {^1_2}\bigotimes{^3_4} $$
 
 ### 4.根号、分数、括号、矢量
+
+- 根号：通用方式为$\sqrt[a]{b}$
+
+  > []内的 a 表示开 a 次方，若省略则表示开平方 $\sqrt{b}$,如果被开方的是单个字符，{}可以省略，$\sqrt[a]b$
+
+- 分式：分式的通用式一般可以为$\frac{a}{b}$,也可以是$a+1 \over b+1$,使用`\over`来分割分母和分子，但需要注意分隔空格
+- 括号
+  - 正常使用的小括号和方括号，$(x+y)[a+b]$
+  - 大括号： 使用`{}`来分组，因此需要使用`\{`和`\}`来进行转义表示大括号，也可以使用`\lbrace`和`\rbrace`来表示, $\{a*b\}$或者$\lbrace a*b \rbrace$
+  - 尖括号： 使用\langle 和\rangle 分别表示左尖括号和右尖括号。$\langle x \rangle$
+  - 向上取整： 使用\lceil 和\rceil 表示。$\lceil x \rceil$
+  - 向下取整： 使用\lfloor 和\rfloor 表示。$\lfloor x \rfloor$
+
+> 原始括号不会随公式大小缩放。例如$(\frac {\frac 12}2)$,使用`\left( ...\right)`可以自适应地调整括号。例如$\left( \frac {\frac 12}2 \right)$
