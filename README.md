@@ -11,6 +11,8 @@
   - [1. 回调地狱](#1-回调地狱)
   - [2.promise缺点](#2promise缺点)
 - [简介](#简介)
+  - [1. 典型写法](#1-典型写法)
+  - [2. 简单创建器](#2-简单创建器)
 - [提交规范](#提交规范)
 
 ## 背景
@@ -34,7 +36,7 @@ promise更多使用细节就不在进行重复了，因为这些只是前菜。
 
 这时我们就需要一个更高级的 Promise。
 
-下面列举一些异步处理演变过程
+下面列举一些异步处理演变过程,也算是前置知识
 
 - Observable（观察模式）
 - FRP（响应式编程）
@@ -48,6 +50,22 @@ promise更多使用细节就不在进行重复了，因为这些只是前菜。
 > RxJS 就是 ReactiveX 在 JavaScript 语言上的实现
 
 <p><img style="max-height: 2em;"  src="https://s1.ax1x.com/2022/06/09/XsvseS.png"/><span style="font-size: 2em;color: #EC0C8E;margin-left:0.3em;">RxJS</span> 是 Reactive Extensions for JavaScript 的缩写，起源于 Reactive Extensions，是一个基于可观测数据流 Stream 结合观察者模式和迭代器模式的一种异步编程的应用库。RxJS 是 Reactive Extensions 在 JavaScript 上的实现。</p>
+
+
+### 1. 典型写法
+```js
+of(1,2,3).pipe(  
+  filter(item=>item % 2 === 1),  
+  map(item=>item \* 3),  
+).subscribe(item=> console.log(item))
+```
+其中 of 称为创建器（creator），用来创建流，它返回一个 Observable 类型的对象，filter 和 map 称为操作符（operator），用来对条目进行处理。这些操作符被当作 Observable 对象的 pipe 方法的参数传进去。诚然，这个写法略显怪异，不过这主要是被 js 的设计缺陷所迫，它已经是目前 js 体系下多种解决方案中相对好看的一种了。
+
+
+Observable 对象的 subscribe 方法表示消费者要订阅这个流，当流中出现数据时，传给 subscribe 方法的回调函数就会被调用，并且把这个数据传进去。这个回调函数可能被调用很多次，取决于这个流中有多少条数据。
+
+### 2. 简单创建器
+
 
 ## 提交规范
 
